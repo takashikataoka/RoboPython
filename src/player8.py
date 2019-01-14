@@ -218,7 +218,7 @@ class Player8(player7.Player7, threading.Thread):
 
     # 返り値は辞書型になっている。教科書と違うので注意
     def estimatePosition(self, message, neckDir, playerX, playerY):
-        result = {"x": 999, "y": 999}
+        result = {"x": self.OUT_OF_RANGE, "y": self.OUT_OF_RANGE}
         message = self.getLandMarker(message, playerX, playerY)
 
         flag = self.getObjectMessage(message, "((g") + \
@@ -239,7 +239,7 @@ class Player8(player7.Player7, threading.Thread):
             dist = self.getParam(flag, name, 1)
             dir = self.getParam(flag, name, 2)
             rad = math.radians(self.normalizeAngle(dir + neckDir))
-            W = 1 / dist
+            W = 1 / (dist + 0.1)
             X += W * (self.m_dFlagX[j] - dist * math.cos(rad))
             Y += W * (self.m_dFlagY[j] - dist * math.sin(rad))
             S += W
