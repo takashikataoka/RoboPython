@@ -35,11 +35,13 @@ class Player20(player19.Player19, threading.Thread):
 
         # attribute error の発生により移動
         self.m_debugLv23 = False
+        """
         for i in range(self.GAME_LENGTH):
             self.m_iTime = i
             self.setKickTarget()
             self.setMoveTarget()
             self.setFaceTarget()
+        """
         self.m_iTime = 0
         self.m_debugLv20 = False
 
